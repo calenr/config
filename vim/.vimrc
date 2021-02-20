@@ -38,10 +38,14 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Syntax highlighting and stuff
 syntax on
-filetype plugin indent on
+filetype plugin on
+filetype indent on
 
 " Show linenumbers
 set number
 
 " Show colored column at column 80
 set colorcolumn=80
+
+" Install python-mode from here
+" https://github.com/python-mode/python-mode

@@ -41,11 +41,16 @@ syntax on
 filetype plugin on
 filetype indent on
 
-" Show linenumbers
-set number
-
-" Show colored column at column 80
-set colorcolumn=80
+set number " Show linenumbers
+set colorcolumn=80 " Show colored column at column 80
+set showcmd "shows <leader> in the bottom right corner of vim ("\" by default)
+colorscheme calen_colors " Use my custom colorscheme
 
 " Install python-mode from here
 " https://github.com/python-mode/python-mode
+
+let g:pymode = 1 " Enable python-mode
+let g:pymode_warnings = 1 " Enable warnings
+let g:pymode_paths = []
+" let g:pymode_trim_whitespace = 1 " Trim unused white spaces on save
+let g:pymode_options = 1 " sets the default python options

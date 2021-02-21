@@ -90,9 +90,14 @@ filetype plugin on
 filetype indent on
 
 set number " Show linenumbers
-set colorcolumn=80 " Show colored column at column 80
+" set colorcolumn=80 " Show colored column at column 80
 set showcmd "shows <leader> in the bottom right corner of vim ("\" by default)
 colorscheme calen_colors " Use my custom colorscheme
+
+
+" Highlight everything past row 80 red
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+match OverLength /\%>80v.\+/
 
 " ======== Pymode =================
 " Install python-mode from here
@@ -108,9 +113,9 @@ let g:pymode_syntax_all = 1
 
 " =========== GitGutter ==========
 set updatetime=100 " Update more frequently
-
-" =========== Rainbow ============
-let g:rainbow_active = 1
+let g:gitgutter_sign_allow_clobber = 1
 " Removes annoying highligting from the SignColumn
 highlight! link SignColumn LineNr
 
+" =========== Rainbow ============
+let g:rainbow_active = 1

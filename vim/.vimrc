@@ -110,10 +110,11 @@ let g:pymode_paths = []
 let g:pymode_options = 1 " sets the default python options
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
+let g:pymode_options_colorcolumn = 0
 
 " =========== GitGutter ==========
 set updatetime=100 " Update more frequently
-let g:gitgutter_sign_allow_clobber = 1
+let g:gitgutter_sign_allow_clobber = 0
 " Removes annoying highligting from the SignColumn
 highlight! link SignColumn LineNr
 

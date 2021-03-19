@@ -94,10 +94,16 @@ set number " Show linenumbers
 set showcmd "shows <leader> in the bottom right corner of vim ("\" by default)
 colorscheme calen_colors " Use my custom colorscheme
 
+set foldcolumn=2 " Show to columns for folding
+" Set fold column to have color as the line
+highlight! link FoldColumn LineNr
+" Set the fold line to have the same color as the line
+highlight! link Folded LineNr
+
 
 " Highlight everything past row 80 red
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-match OverLength /\%>80v.\+/
+match OverLength /\%>79v.\+/
 
 " ======== Pymode =================
 " Install python-mode from here

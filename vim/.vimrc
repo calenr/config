@@ -12,6 +12,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'frazrepo/vim-rainbow'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'itchyny/lightline.vim'
+Plugin 'preservim/nerdtree'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -126,3 +128,11 @@ highlight! link SignColumn LineNr
 
 " =========== Rainbow ============
 let g:rainbow_active = 1
+
+" =========== Light Line ==========
+set laststatus=2 " Shows the lightline line
+set noshowmode " remive the "---insert---" text fromt he status line
+
+" =========== Nerd Tree ===========
+" Open nerd tree with CTRL-o
+map <C-o> :NERDTreeToggle<CR>

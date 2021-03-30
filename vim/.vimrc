@@ -14,6 +14,7 @@ Plugin 'frazrepo/vim-rainbow'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/lightline.vim'
 Plugin 'preservim/nerdtree'
+Plugin 'bfrg/vim-cpp-modern'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -120,6 +121,10 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_options_colorcolumn = 0
 
+let g:pymode_rope = 1
+let g:pymode_rope_regenerate_on_write = 1
+let g:pymode_rope_complete_on_dot = 1
+set completeopt=menuone,noinsert
 " =========== GitGutter ==========
 set updatetime=100 " Update more frequently
 let g:gitgutter_sign_allow_clobber = 0

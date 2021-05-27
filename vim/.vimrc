@@ -15,6 +15,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/lightline.vim'
 Plugin 'preservim/nerdtree'
 Plugin 'bfrg/vim-cpp-modern'
+Plugin 'tomasiser/vim-code-dark'
+Plugin 'unblevable/quick-scope'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -95,7 +97,7 @@ filetype indent on
 set number " Show linenumbers
 " set colorcolumn=80 " Show colored column at column 80
 set showcmd "shows <leader> in the bottom right corner of vim ("\" by default)
-colorscheme calen_colors " Use my custom colorscheme
+" colorscheme calen_colors " Use my custom colorscheme
 
 set foldcolumn=2 " Show to columns for folding
 " Set fold column to have color as the line
@@ -141,3 +143,9 @@ set noshowmode " remive the "---insert---" text fromt he status line
 " =========== Nerd Tree ===========
 " Open nerd tree with CTRL-o
 map <C-o> :NERDTreeToggle<CR>
+
+" ========= Vim Code Dark =========
+colorscheme codedark
+
+" ========== Quick Scope ==========
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']

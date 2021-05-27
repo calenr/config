@@ -12,11 +12,17 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'frazrepo/vim-rainbow'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'itchyny/lightline.vim'
-Plugin 'preservim/nerdtree'
+" Plugin 'itchyny/lightline.vim' " Use airline instead
+" Plugin 'preservim/nerdtree' " Use netrw instead
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bfrg/vim-cpp-modern'
 Plugin 'tomasiser/vim-code-dark'
+Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'unblevable/quick-scope'
+Plugin 'bling/vim-bufferline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'edkolev/tmuxline.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -142,10 +148,37 @@ set noshowmode " remive the "---insert---" text fromt he status line
 
 " =========== Nerd Tree ===========
 " Open nerd tree with CTRL-o
-map <C-o> :NERDTreeToggle<CR>
+" map <C-o> :NERDTreeToggle<CR>
+" let NERDTreeHijackNetrw=1 " Open nerd tree in window instead of project drawer
 
 " ========= Vim Code Dark =========
 colorscheme codedark
 
 " ========== Quick Scope ==========
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" =========== Buffer line ==========
+" scrolling with fixed current buffer position
+  let g:bufferline_rotate = 1
+  let g:bufferline_modified = '+'
+  let g:bufferline_fixed_index =  0 "always first
+" Put buffer in status line
+  let g:bufferline_echo = 0
+"  autocmd VimEnter *
+"    \ let &statusline='%{bufferline#refresh_status()}'
+"      \ .bufferline#get_status_string()
+
+" ========== Paper Color ===========
+" I dont use this, but I have it here for when I switch to light theme
+" set background=light
+" set background=dark
+" colorscheme PaperColor
+
+" =========== Airline ==============
+let g:airline_theme='powerlineish'
+" let g:airline_powerline_fonts = 1
+let g:airline_symbols_ascii = 1
+
+" =========== Tmuxline ============
+let g:tmuxline_powerline_separators = 0
+

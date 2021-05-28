@@ -23,6 +23,13 @@ Plugin 'unblevable/quick-scope'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'dense-analysis/ale'
+Plugin 'python-mode/python-mode'
+Plugin 'ycm-core/YouCompleteMe'
+" Plugin 'taketwo/vim-ros " For if you are editing ros
+
+
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -129,10 +136,10 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_options_colorcolumn = 0
 
-let g:pymode_rope = 1
-let g:pymode_rope_regenerate_on_write = 1
-let g:pymode_rope_complete_on_dot = 1
-set completeopt=menuone,noinsert
+" let g:pymode_rope = 1
+" let g:pymode_rope_regenerate_on_write = 1
+" let g:pymode_rope_complete_on_dot = 1
+" set completeopt=menuone,noinsert
 " =========== GitGutter ==========
 set updatetime=100 " Update more frequently
 let g:gitgutter_sign_allow_clobber = 0
@@ -182,3 +189,13 @@ let g:airline_symbols_ascii = 1
 
 " =========== Tmuxline ============
 let g:tmuxline_powerline_separators = 0
+
+" ============ ALE ===============
+let g:airline#extensions#ale#enabled=1 " Enable ale in the airline status bar
+
+" ============= VIM ROS ===========
+" Setup semantic triggers for C++
+let g:ycm_semantic_triggers = {
+\   'roslaunch' : ['="', '$(', '/'],
+\   'rosmsg,rossrv,rosaction' : ['re!^', '/'],
+\ }

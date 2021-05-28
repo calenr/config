@@ -147,6 +147,7 @@ set laststatus=2 " Shows the lightline line
 set noshowmode " remive the "---insert---" text fromt he status line
 
 " =========== Nerd Tree ===========
+" Note: Use  netrw instead
 " Open nerd tree with CTRL-o
 " map <C-o> :NERDTreeToggle<CR>
 " let NERDTreeHijackNetrw=1 " Open nerd tree in window instead of project drawer
@@ -176,9 +177,8 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " =========== Airline ==============
 let g:airline_theme='powerlineish'
-" let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1 " Sometimes powerline font doesn't render.
 let g:airline_symbols_ascii = 1
 
 " =========== Tmuxline ============
 let g:tmuxline_powerline_separators = 0
-

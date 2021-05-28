@@ -39,15 +39,19 @@ cp .vimrc ~/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
+# Install YCM
+sudo apt install -y build-essential cmake vim-nox python3-dev
+cd ~/.vim/bundle/YouCompleteMe
+python3 install.py --clangd-completer
+
 # Script to install python mode for vim
 # See https://github.com/python-mode/python-mode
 # Uses manual install instructions as of 2/20/2021
-mkdir -p ~/.vim/pack/python-mode/start
-cd ~/.vim/pack/python-mode/start
-git clone --recurse-submodules https://github.com/python-mode/python-mode.git
-cd python-mode
-cp -R * ~/.vim
+# mkdir -p ~/.vim/pack/python-mode/start
+# cd ~/.vim/pack/python-mode/start
+# git clone --recurse-submodules https://github.com/python-mode/python-mode.git
+# cd python-mode
+# cp -R * ~/.vim
 
 echo "To finish installation, open vim and run the following"
 echo ":helptags  ~/.vim/doc/"
-echo ":PluginInstall"

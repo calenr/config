@@ -123,6 +123,24 @@ highlight! link Folded LineNr
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%>79v.\+/
 
+" ============ KEY MAPPINGS ===============
+" Remap space to jk
+inoremap jk <Esc>
+
+" Remap <Leader> to ' '
+let mapleader=" "
+
+" turn off search highlight
+nnoremap <Leader><space> :nohl<CR>
+
+" Working with tabs
+nnoremap <leader>tn :tabnew<CR>
+nnoremap <leader>te :tabedit<CR>
+nnoremap <leader>tq :tabclose<CR>
+
+" scroll through commands history
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 " ======== Pymode =================
 " Install python-mode from here
 " https://github.com/python-mode/python-mode

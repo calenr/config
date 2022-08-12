@@ -123,6 +123,9 @@ highlight! link Folded LineNr
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%>79v.\+/
 
+set ssop-=options    " do not store global and local values in a session
+set ssop-=folds      " do not store folds
+
 " ============ KEY MAPPINGS ===============
 " Remap space to jk
 inoremap jk <Esc>
@@ -141,6 +144,34 @@ nnoremap <leader>tq :tabclose<CR>
 " scroll through commands history
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+
+" ========== Auto save and load sessions =====
+" see https://stackoverflow.com/questions/1642611/how-to-save-and-restore-multiple-different-sessions-in-vim
+function! MakeSession()
+  let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
+  if (filewritable(b:sessiondir) != 2)
+    exe 'silent !mkdir -p ' b:sessiondir
+    redraw!
+  endif
+  let b:filename = b:sessiondir . '/session.vim'
+  exe "mksession! " . b:filename
+endfunction
+
+function! LoadSession()
+  let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
+  let b:sessionfile = b:sessiondir . "/session.vim"
+  if (filereadable(b:sessionfile))
+    exe 'source ' b:sessionfile
+  else
+    echo "No session loaded."
+  endif
+endfunction
+
+" Adding automatons for when entering or leaving Vim
+if(argc() == 0)
+  au VimEnter * nested :call LoadSession()
+endif
+au VimLeave * :call MakeSession()
 " ======== Pymode =================
 " Install python-mode from here
 " https://github.com/python-mode/python-mode

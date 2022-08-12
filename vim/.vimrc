@@ -126,6 +126,9 @@ match OverLength /\%>79v.\+/
 set ssop-=options    " do not store global and local values in a session
 set ssop-=folds      " do not store folds
 
+" Make line numbers show in netrw
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+
 " ============ KEY MAPPINGS ===============
 " Remap space to jk
 inoremap jk <Esc>

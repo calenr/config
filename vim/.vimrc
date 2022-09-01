@@ -129,6 +129,36 @@ set ssop-=folds      " do not store folds
 " Make line numbers show in netrw
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
+set backup " Back up files
+
+" Create backup directory
+if empty(glob('~/.vim/backup'))
+    silent !mkdir -p ~/.vim/backup
+endif
+
+set backupdir=~/.vim/backup/
+
+set undofile " Undo changes to files after saving them
+" Create backup directory
+if empty(glob('~/.vim/undo'))
+    silent !mkdir -p ~/.vim/undo
+endif
+
+set undodir=~/.vim/undo/ " Set a directory to save undo data with full path
+
+" Create backup directory
+if empty(glob('~/.vim/tmp'))
+    silent !mkdir -p ~/.vim/tmp
+endif
+
+set directory=~/.vim/tmp/ " Set a directory for temporary (swp) files
+
+set autoread " Automatically update a file if another application wrote to it
+
+set wildmenu " Improve command line tab completion
+set wildmode=list:longest
+
+
 " ============ KEY MAPPINGS ===============
 " Remap space to jk
 inoremap jk <Esc>

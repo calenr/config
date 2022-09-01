@@ -64,6 +64,11 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " ========= FROM VUNDLE ========
 
+
+" ========= Vim Code Dark =========
+colorscheme codedark
+
+" ========== Custom Settings =======
 set nocompatible  "Kill vi-compatibility
 set t_Co=256 "256 color
 set encoding=utf-8 "UTF-8 character encoding
@@ -108,9 +113,7 @@ filetype plugin on
 filetype indent on
 
 set number " Show linenumbers
-" set colorcolumn=80 " Show colored column at column 80
 set showcmd "shows <leader> in the bottom right corner of vim ("\" by default)
-" colorscheme calen_colors " Use my custom colorscheme
 
 set foldcolumn=2 " Show to columns for folding
 " Set fold column to have color as the line
@@ -118,10 +121,6 @@ highlight! link FoldColumn LineNr
 " Set the fold line to have the same color as the line
 highlight! link Folded LineNr
 
-
-" Highlight everything past row 80 red
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-match OverLength /\%>79v.\+/
 
 set ssop-=options    " do not store global and local values in a session
 set ssop-=folds      " do not store folds
@@ -139,14 +138,15 @@ endif
 set backupdir=~/.vim/backup/
 
 set undofile " Undo changes to files after saving them
-" Create backup directory
+
+" Create undo directory
 if empty(glob('~/.vim/undo'))
     silent !mkdir -p ~/.vim/undo
 endif
 
 set undodir=~/.vim/undo/ " Set a directory to save undo data with full path
 
-" Create backup directory
+" Create tmp directory
 if empty(glob('~/.vim/tmp'))
     silent !mkdir -p ~/.vim/tmp
 endif
@@ -157,7 +157,6 @@ set autoread " Automatically update a file if another application wrote to it
 
 set wildmenu " Improve command line tab completion
 set wildmode=list:longest
-
 
 " ============ KEY MAPPINGS ===============
 " Remap space to jk
@@ -205,6 +204,51 @@ if(argc() == 0)
   au VimEnter * nested :call LoadSession()
 endif
 au VimLeave * :call MakeSession()
+
+" ============ Long Line Highlighting ===========
+" highlight OverLength ctermbg=black guibg=#FFD9D9
+" match OverLength /\%>79v.\+/
+" set textwidth=80
+" highlight ColorColumn ctermbg=black
+" set colorcolumn=80 " Show colored column at column 80
+"0------10--------20--------30--------40--------50--------60--------70--------80--------90-------100-------110-------120--------130------140
+"2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+"
+" see https://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
+" see https://stackoverflow.com/questions/395114/vim-syntax-coloring-how-do-i-highlight-long-lines-only
+
+
+highlight OverLength ctermbg=darkgrey ctermfg=white guibg=#292929
+
+fun! LongLineHighlightInit()
+    if !exists("w:llh")
+        call LongLineHighlightOn()
+    endif
+endfunction
+
+fun! LongLineHighlightOn()
+    let w:llh = matchadd("OverLength", '\%<80v.\%>79v')
+endfunction
+
+fun! LongLineHighlightOff()
+    call matchdelete(w:llh)
+    let w:llh = 0
+endfunction
+
+fun! LongLineHighlightToggle()
+    if !exists("w:llh") || w:llh == 0
+        call LongLineHighlightOn()
+    else
+        call LongLineHighlightOff()
+    endif
+endfunction
+
+augroup LongLineHighlight
+    autocmd BufWinEnter * call LongLineHighlightInit()
+augroup end
+
+nnoremap <Leader>lh :call LongLineHighlightToggle()<CR>
+
 " ======== Pymode =================
 " Install python-mode from here
 " https://github.com/python-mode/python-mode
@@ -241,9 +285,6 @@ set noshowmode " remive the "---insert---" text fromt he status line
 " map <C-o> :NERDTreeToggle<CR>
 " let NERDTreeHijackNetrw=1 " Open nerd tree in window instead of project drawer
 
-" ========= Vim Code Dark =========
-colorscheme codedark
-
 " ========== Quick Scope ==========
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
@@ -257,12 +298,6 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 "  autocmd VimEnter *
 "    \ let &statusline='%{bufferline#refresh_status()}'
 "      \ .bufferline#get_status_string()
-
-" ========== Paper Color ===========
-" I dont use this, but I have it here for when I switch to light theme
-" set background=light
-" set background=dark
-" colorscheme PaperColor
 
 " =========== Airline ==============
 let g:airline_theme='powerlineish'

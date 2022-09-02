@@ -121,6 +121,9 @@ highlight! link FoldColumn LineNr
 " Set the fold line to have the same color as the line
 highlight! link Folded LineNr
 
+set cursorline " Highlight cursor line
+set cursorcolumn " Highlight cursor column
+
 
 set ssop-=options    " do not store global and local values in a session
 set ssop-=folds      " do not store folds
@@ -156,14 +159,17 @@ set directory=~/.vim/tmp/ " Set a directory for temporary (swp) files
 set autoread " Automatically update a file if another application wrote to it
 
 set wildmenu " Improve command line tab completion
-set wildmode=list:longest
 
 " ============ KEY MAPPINGS ===============
 " Remap space to jk
 inoremap jk <Esc>
+inoremap <esc> <nop>
 
 " Remap <Leader> to ' '
 let mapleader=" "
+
+" Remap local leader to '\'
+let maplocalleader="\\"
 
 " turn off search highlight
 nnoremap <Leader><space> :nohl<CR>
@@ -177,6 +183,26 @@ nnoremap <leader>tq :tabclose<CR>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
+" Insert a new line without going into insert mode
+nnoremap <leader>o o<esc>
+nnoremap <leader>O O<esc>
+
+" Move between split windows
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+" Resize split window with arrow keys
+nnoremap <c-up> <c-w>-
+nnoremap <c-down> <c-w>+
+nnoremap <c-left> <c-w><
+nnoremap <c-right> <c-w>>
+
+nnoremap ]h :call GitGutterNextHunkCycle()<CR>
+nnoremap [h :call GitGutterPrevHunkCycle()<CR>
+
+" Vim script settings
 " ========== Auto save and load sessions =====
 " see https://stackoverflow.com/questions/1642611/how-to-save-and-restore-multiple-different-sessions-in-vim
 function! MakeSession()
@@ -249,6 +275,15 @@ augroup end
 
 nnoremap <Leader>lh :call LongLineHighlightToggle()<CR>
 
+" Turn on curosrline/column only in current active window
+augroup cursor_off
+    autocmd!
+    autocmd WinLeave * set nocursorline nocursorcolumn
+    autocmd WinEnter * set cursorline cursorcolumn
+augroup END
+
+" Plugin settings
+
 " ======== Pymode =================
 " Install python-mode from here
 " https://github.com/python-mode/python-mode
@@ -271,6 +306,24 @@ set updatetime=100 " Update more frequently
 let g:gitgutter_sign_allow_clobber = 0
 " Removes annoying highligting from the SignColumn
 highlight! link SignColumn LineNr
+
+function! GitGutterNextHunkCycle()
+  let line = line('.')
+  silent! GitGutterNextHunk
+  if line('.') == line
+    1
+    GitGutterNextHunk
+  endif
+endfunction
+
+function! GitGutterPrevHunkCycle()
+  let line = line('.')
+  silent! GitGutterPrevHunk
+  if line('.') == line
+    999999999
+    GitGutterPrevHunk
+  endif
+endfunction
 
 " =========== Rainbow ============
 let g:rainbow_active = 1

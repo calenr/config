@@ -1,4 +1,4 @@
-" ========= FROM VUNDLE ========
+"======== FROM VUNDLE ========
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -11,18 +11,19 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'frazrepo/vim-rainbow'
+Plugin 'Konfekt/FastFold'
 Plugin 'airblade/vim-gitgutter'
-" Plugin 'itchyny/lightline.vim' " Use airline instead
-" Plugin 'preservim/nerdtree' " Use netrw instead
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bfrg/vim-cpp-modern'
 Plugin 'tomasiser/vim-code-dark'
-Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'unblevable/quick-scope'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+Plugin 'machakann/vim-highlightedyank'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'dense-analysis/ale'
 Plugin 'python-mode/python-mode'
 Plugin 'ycm-core/YouCompleteMe'
@@ -171,6 +172,9 @@ let mapleader=" "
 " Remap local leader to '\'
 let maplocalleader="\\"
 
+" Source .vimrc
+map <Leader>sv :source $MYVIMRC<CR>
+
 " turn off search highlight
 nnoremap <Leader><space> :nohl<CR>
 
@@ -199,8 +203,13 @@ nnoremap <c-down> <c-w>+
 nnoremap <c-left> <c-w><
 nnoremap <c-right> <c-w>>
 
+" Cycle through git gutter hunks with wrapping
 nnoremap ]h :call GitGutterNextHunkCycle()<CR>
 nnoremap [h :call GitGutterPrevHunkCycle()<CR>
+
+" Toggle relative line number
+nnoremap <F6> :set relativenumber!<CR>
+inoremap <F6> <esc>:set relativenumber!<CR>i
 
 " Vim script settings
 " ========== Auto save and load sessions =====

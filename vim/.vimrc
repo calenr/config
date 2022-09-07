@@ -21,12 +21,13 @@ Plugin 'unblevable/quick-scope'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'dense-analysis/ale'
 Plugin 'python-mode/python-mode'
-Plugin 'ycm-core/YouCompleteMe'
+" Plugin 'ycm-core/YouCompleteMe'
 " Plugin 'taketwo/vim-ros " For if you are editing ros
 
 
@@ -363,11 +364,21 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " =========== Airline ==============
 let g:airline_theme='powerlineish'
-" let g:airline_powerline_fonts = 1 " Sometimes powerline font doesn't render.
-let g:airline_symbols_ascii = 1
+let g:airline_powerline_fonts = 1 " Sometimes powerline font doesn't render.
+" let g:airline_symbols_ascii = 1
 
 " =========== Tmuxline ============
-let g:tmuxline_powerline_separators = 0
+" let g:tmuxline_powerline_separators = 0
+" See https://man7.org/linux/man-pages/man3/strftime.3.html
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '#W',
+      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 4 | cut -d "," -f 1) up'],
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W #F',
+      \'x'    : '%Y Week %W',
+      \'y'    : ['%a %b %d', '%T %Z'],
+      \'z'    : '#H'}
 
 " ============ ALE ===============
 let g:airline#extensions#ale#enabled=1 " Enable ale in the airline status bar

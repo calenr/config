@@ -338,16 +338,6 @@ endfunction
 " =========== Rainbow ============
 let g:rainbow_active = 1
 
-" =========== Light Line ==========
-set laststatus=2 " Shows the lightline line
-set noshowmode " remive the "---insert---" text fromt he status line
-
-" =========== Nerd Tree ===========
-" Note: Use  netrw instead
-" Open nerd tree with CTRL-o
-" map <C-o> :NERDTreeToggle<CR>
-" let NERDTreeHijackNetrw=1 " Open nerd tree in window instead of project drawer
-
 " ========== Quick Scope ==========
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
@@ -365,6 +355,7 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " =========== Airline ==============
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1 " Sometimes powerline font doesn't render.
+let g:airline#extensions#tabline#enabled = 1
 " let g:airline_symbols_ascii = 1
 
 " =========== Tmuxline ============
@@ -373,12 +364,12 @@ let g:airline_powerline_fonts = 1 " Sometimes powerline font doesn't render.
 let g:tmuxline_preset = {
       \'a'    : '#S',
       \'b'    : '#W',
-      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 4 | cut -d "," -f 1) up'],
+      \'c'    : '#(uptime | cut -d " " -f 4 | cut -d "," -f 1) up',
       \'win'  : '#I #W',
       \'cwin' : '#I #W #F',
       \'x'    : '%Y Week %W',
       \'y'    : ['%a %b %d', '%T %Z'],
-      \'z'    : '#H'}
+      \'z'    : '#(whoami)@#H'}
 
 " ============ ALE ===============
 let g:airline#extensions#ale#enabled=1 " Enable ale in the airline status bar

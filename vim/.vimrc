@@ -364,7 +364,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:tmuxline_preset = {
       \'a'    : '#S',
       \'b'    : '#W',
-      \'c'    : '#(uptime | cut -d " " -f 4 | cut -d "," -f 1) up',
+      \'c'    : '#(uptime -p)',
       \'win'  : '#I #W',
       \'cwin' : '#I #W #F',
       \'x'    : '%Y Week %W',

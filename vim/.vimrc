@@ -105,6 +105,7 @@ set backspace=indent,eol,start  "Better backspacing
 set linebreak  "Intelligently wrap long files
 set ttyfast  "Speed up vim
 set nostartofline "Vertical movement preserves horizontal position
+set noshowmode " Remove '-- INSERT --' from command line
 
 " Strip whitespace from end of lines when writing file
 autocmd BufWritePre * :%s/\s\+$//e

@@ -24,7 +24,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'edkolev/tmuxline.vim'
-Plugin 'tmux-plugins/vim-tmux-focus-events'
+" Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'dense-analysis/ale'
 Plugin 'python-mode/python-mode'
 " Plugin 'ycm-core/YouCompleteMe'
@@ -80,6 +80,9 @@ set tabstop=4  "4 space tabs
 set shiftwidth=4  "4 space shift
 set softtabstop=4  "Tab spaces in no hard tab mode
 set expandtab  " Expand tabs into spaces
+
+autocmd Filetype cpp setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
 set autoindent  "autoindent on new lines
 set showmatch  "Highlight matching braces
 
@@ -264,7 +267,7 @@ fun! LongLineHighlightInit()
 endfunction
 
 fun! LongLineHighlightOn()
-    let w:llh = matchadd("OverLength", '\%<80v.\%>79v')
+    let w:llh = matchadd("OverLength", '\%<101v.\%>100v')
 endfunction
 
 fun! LongLineHighlightOff()

@@ -40,9 +40,9 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim --not-a-term -E -s +PluginInstall +qall
 
 # Install YCM
-sudo apt install -y build-essential cmake vim-nox python3-dev
-cd ~/.vim/bundle/YouCompleteMe
-python3 install.py --clangd-completer
+# sudo apt install -y build-essential cmake vim-nox python3-dev
+# cd ~/.vim/bundle/YouCompleteMe
+# python3 install.py --clangd-completer
 
 # Script to install python mode for vim
 # See https://github.com/python-mode/python-mode

@@ -68,7 +68,7 @@ filetype plugin indent on    " required
 
 
 " ========= Vim Code Dark =========
-slient! colorscheme codedark
+silent! colorscheme codedark
 
 " ========== Custom Settings =======
 set nocompatible  "Kill vi-compatibility

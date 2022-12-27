@@ -216,6 +216,10 @@ nnoremap [h :call GitGutterPrevHunkCycle()<CR>
 nnoremap <F6> :set relativenumber!<CR>
 inoremap <F6> <esc>:set relativenumber!<CR>i
 
+" Paste mode
+nnoremap <F7> :set paste<CR>
+nnoremap <F8> :set nopaste<CR>
+
 " Vim script settings
 " ========== Auto save and load sessions =====
 " see https://stackoverflow.com/questions/1642611/how-to-save-and-restore-multiple-different-sessions-in-vim

@@ -37,7 +37,7 @@ cp .vimrc ~/.vimrc
 
 # Install vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall
+vim --not-a-term +PluginInstall +qall
 
 # Install YCM
 sudo apt install -y build-essential cmake vim-nox python3-dev

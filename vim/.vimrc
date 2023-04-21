@@ -220,6 +220,10 @@ inoremap <F6> <esc>:set relativenumber!<CR>i
 nnoremap <F7> :set paste<CR>
 nnoremap <F8> :set nopaste<CR>
 
+" Show Whitespace
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+nnoremap <F9> :set list!<CR>
+
 " Vim script settings
 " ========== Auto save and load sessions =====
 " see https://stackoverflow.com/questions/1642611/how-to-save-and-restore-multiple-different-sessions-in-vim

@@ -179,6 +179,7 @@ let maplocalleader="\\"
 
 " Source .vimrc
 map <Leader>sv :source $MYVIMRC<CR>
+map <Leader>vm :vsp $MYVIMRC<CR>
 
 " turn off search highlight
 nnoremap <Leader><space> :nohl<CR>

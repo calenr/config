@@ -110,6 +110,12 @@ set ttyfast  "Speed up vim
 set nostartofline "Vertical movement preserves horizontal position
 set noshowmode " Remove '-- INSERT --' from command line
 
+" Set mapping timeout to 1s
+set timeoutlen=1000
+
+" Set key code timeout to 10ms
+set ttimeoutlen=10
+
 " Strip whitespace from end of lines when writing file
 autocmd BufWritePre * :%s/\s\+$//e
 
@@ -397,7 +403,7 @@ let g:airline#extensions#tabline#enabled = 1
 " See https://man7.org/linux/man-pages/man3/strftime.3.html
 let g:tmuxline_preset = {
       \'a'    : '#S',
-      \'b'    : '#W',
+      \'b'    : '#W #P',
       \'c'    : '#(uptime -p)',
       \'win'  : '#I #W',
       \'cwin' : '#I #W #F',

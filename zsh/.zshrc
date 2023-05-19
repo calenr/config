@@ -100,6 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# 10ms for key sequences. Reduces escape key delay
+KEYTIMEOUT=1
+
 # Enable vi mode
 bindkey -v
 

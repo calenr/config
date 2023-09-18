@@ -1,6 +1,18 @@
+# Vim
 *~
 .*.swp
 .*.swo
 .*.swn
+**.vim
+
+# Python
 *__pycache__
+
+# Mac
 .DS_Store
+
+# My TMUX launch files
+**/_tmux_launch/**
+
+# Other files I want to ignore
+**/_gitignore/**

@@ -1,8 +1,9 @@
 #!/bin/bash
 set -x
+DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 git config --global core.editor vim
-git config --global core.excludesfile ./.gitignore_global
+git config --global core.excludesfile ${DIR}/.gitignore_global
 
 git config --global core.autocrlf input # Linux
 # git config --global core.autocrlf true # Windows

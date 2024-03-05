@@ -70,7 +70,7 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git git-commit tmux zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,5 +110,11 @@ bindkey -v
 # Note that pure is incompatible with ohmyzsh plugins vi-mode and virtualenv
 # https://github.com/sindresorhus/pure
 fpath+="$HOME/.zsh/pure"
+
+# Set 256 Colors
+
+[[ "$TERM" == "xterm" ]] && export TERM=xterm-256color
 autoload -U promptinit; promptinit
 prompt pure
+
+alias gsuir="git submodule update --init --recursive"
